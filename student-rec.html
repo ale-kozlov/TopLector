@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <title>TopLector</title>
+</head>
+
+<body>
+
+<header class="header">
+  <h1 class="visually-hidden">TopLector</h1>
+  <a href="index.html" class="header__logo">
+    <img src="img/toplector-logo.png" alt="TopLector Logo" width="1536" height="744">
+  </a>
+</header>
+
+<main>
+  <h1 class="visually-hidden">Main Information</h1>
+  <section class="stream-block container">
+    <h2 class="visually-hidden">Stream Lesson</h2>
+    <video class="stream-block__video" width="640" height="360" controls="controls" poster="upload/hackathon.jpg">
+      <source src="upload/file_example.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+    </video>
+  </section>
+
+  <section class="comment__block container">
+    <h2>Комментарии</h2>
+    <ol class="comment__list">
+      <li class="list__user">Ответьте, пожалуйста, на такой вопрос: ...</li>
+    </ol>
+    <form action="#" method="get" class="comment__form">
+      <div class="comment-inner">
+        <label for="comment-textarea"></label>
+        <textarea class="comment__field" rows="3" placeholder="Комментарий" required id="comment-textarea"></textarea>
+      </div>
+      <span class="text__counter">
+        Использовано
+        <output class="char__counter" for="comment-textarea">0</output>/300 символов
+      </span>
+      <button class="comment__button button" type="submit">Отправить</button>
+    </form>
+  </section>
+</main>
+
+<footer class="footer">
+  <h2 class="visually-hidden">Additional information</h2>
+  <p class="copyright">&copy; 2020 TopLector. All right reserved.</p>
+</footer>
+
+<script src="js/comments.js"></script>
+
+</body>
+
+</html>

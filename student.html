@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <title>TopLector</title>
+  <!-- <script>
+    let questions = [];
+    let answerId = 0;
+    window.onload = function () {
+      const lesson = fetch('http://localhost:8000/api/lesson/1');
+      const question = fetch('http://localhost:8000/api/question/1');
+
+      lesson.then(function (data) {
+        return data.json();
+      })
+        .then(function (data) {
+          console.log('data', data.path)
+        });
+
+      question.then(function (data) {
+        return data.json();
+      })
+        .then(function (data) {
+          questions = data;
+          questions[0]['answers'] = [{
+            id: 1,
+            name: 'Вариант 1 тест',
+            is_true: false,
+          }, {
+            id: 2,
+            name: 'Вариант 2 тест',
+            is_true: false,
+          }, {
+            id: 3,
+            name: 'Вариант 3 тест',
+            is_true: true,
+          }]
+        });
+
+      setTimeout(() => {
+        const a = document.getElementById('question-title');
+
+        document.getElementById('question-title').innerHTML = questions[0].name;
+        document.getElementById('question-form').innerHTML = `<div>
+            <h4>${questions[0].answers[0].name}</h4>
+            <input
+              name="question"
+              type="radio"
+              value="${questions[0].answers[0].id}"
+              class="checkboxes" />
+          </div>
+          <div>
+            <h4>${questions[0].answers[1].name}</h4>
+            <input
+              name="question"
+              type="radio"
+              value="${questions[0].answers[1].id}"
+              class="checkboxes" />
+          </div>
+          <div>
+            <h4>${questions[0].answers[2].name}</h4>
+            <input
+              name="question"
+              type="radio"
+              value="${questions[0].answers[2].id}"
+              class="checkboxes" />
+          </div>`;
+
+        document.getElementById('question').style.display = 'block';
+
+        document.getElementById('question-form').addEventListener('click', function (e) {
+          const target = e.target;
+          const value = Number(target.value);
+
+          if (target.nodeName === 'INPUT' && value > 0) {
+            answerId = value;
+          }
+        });
+
+        document.getElementById('question-button').addEventListener('click', function (e) {
+          console.log('answerId', answerId)
+        });
+      }, 10000);
+    };
+  </script> -->
+</head>
+
+<body>
+
+  <header class="header">
+    <h1 class="visually-hidden">TopLector</h1>
+    <a href="index.html" class="header__logo">
+      <img src="img/toplector-logo.png" alt="TopLector Logo" width="1536" height="744">
+    </a>
+  </header>
+
+  <main>
+    <h1 class="visually-hidden">Main Information</h1>
+    <section class="stream-block container">
+      <h2 class="visually-hidden">Stream Lesson</h2>
+      <video class="stream-block__video" width="640" height="360" controls="controls" poster="upload/hackathon.jpg">
+        <source src="upload/file_example.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+      </video>
+
+      <a class="to_archive button" href="student-rec.html">Перейти к архивным лекциям</a>
+    </section>
+
+    <section>
+      <h2 class="visually-hidden">Flash test block</h2>
+
+      <input id="test-block-toggle" type="checkbox">
+      <label class="toggle__btn" for="test-block-toggle"></label>
+      <div class="test-block">
+        <form class="test-block__form" method="dialog">
+          <p class="test-block__question">Когда была основана первая Сечь?</p>
+          <ul class="test-block__answers">
+            <li class="test-block__answer">
+              <label>
+                <input class="answer" type="radio" name="answer" onchange="getNodis()" value="В 1552 году">
+                В 1552 году
+              </label>
+            </li>
+            <li class="test-block__answer">
+              <label>
+                <input class="answer" type="radio" name="answer" onchange="getNodis()" value="В 1991 году">
+                В 1991 году
+              </label>
+            </li>
+            <li class="test-block__answer">
+              <label>
+                <input class="answer" type="radio" name="answer" onchange="getNodis()" value="В 1555 году">
+                В 1555 году
+              </label>
+            </li>
+          </ul>
+          <button class="test-block__btn button" disabled>Ответить</button>
+          <div class="test-block__timer">10</div>
+        </form>
+      </div>
+    </section>
+    <h4 class="alert">
+      Ваш ответ верен!
+    </h4>
+  </main>
+
+  <footer class="footer">
+    <h2 class="visually-hidden">Additional information</h2>
+    <p class="copyright">&copy; 2020 TopLector. All right reserved.</p>
+  </footer>
+
+  <script>
+    // timer = document.querySelector(".test-block__timer");
+    chB = document.getElementById("test-block-toggle");
+    v = document.getElementsByTagName("video")[0];
+    btn = document.querySelector(".test-block__btn");
+
+    v.addEventListener("timeupdate", function () {
+      if (v.currentTime >= 10.0 && v.currentTime < 10.4) {
+        chB.checked = true;
+        timerLeft()
+      }
+    });
+    btn.addEventListener("click", function () {
+      chB.checked = false;
+      document.querySelector(".alert").style.visibility = "visible";
+    });
+
+    function timerLeft() {
+      let timer; // пока пустая переменная
+      let x = 10; // стартовое значение обратного отсчета
+      countdown(); // вызов функции
+      function countdown() {  // функция обратного отсчета
+        document.querySelector(".test-block__timer").innerHTML = x;
+        x--; // уменьшаем число на единицу
+        if (x < 0) {
+          clearTimeout(timer); // таймер остановится на нуле
+          chB.checked = false;
+        }
+        else {
+          timer = setTimeout(countdown, 1000);
+        }
+      }
+    }
+
+    function getNodis() {
+      btn.disabled = false
+    }
+  </script>
+
+</body>
+
+</html>

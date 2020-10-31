@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/normalize.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <title>TopLector</title>
+</head>
+
+<body>
+
+<header class="header">
+  <h1 class="visually-hidden">TopLector</h1>
+  <a href="index.html" class="header__logo">
+    <img src="img/toplector-logo.png" alt="TopLector Logo" width="1536" height="744">
+  </a>
+</header>
+
+<main>
+  <h1 class="visually-hidden">Main Information</h1>
+  <section class="questions container">
+    <h2 class="visually-hidden">Flash test block</h2>
+      <form class="questions__form" action="#" method="get">
+        <p class="questions__title">Выберите тесты из списка:</p>
+        <ul class="questions__list">
+          <li class="questions__list-item">
+            <label>
+              <input class="question" type="checkbox" name="question" value="Когда была основана первая Сечь?">
+              Когда была основана первая Сечь?
+            </label>
+          </li>
+          <li class="questions__list-item">
+            <label>
+              <input class="question" type="checkbox" name="question" value="Что такое DOM?">
+              Что такое DOM?
+            </label>
+          </li>
+          <li class="questions__list-item">
+            <label>
+              <input class="question" type="checkbox" name="question" value="Что такое классы (Classes)?">
+              Что такое классы (Classes)?
+            </label>
+          </li>
+        </ul>
+        <button class="questions__list-button button" type="submit">Добавить</button>
+      </form>
+  </section>
+</main>
+
+<footer class="footer">
+  <h2 class="visually-hidden">Additional information</h2>
+  <p class="copyright">&copy; 2020 TopLector. All right reserved.</p>
+</footer>
+
+</body>
+
+</html>
